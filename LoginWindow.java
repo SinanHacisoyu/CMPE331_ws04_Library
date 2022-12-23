@@ -1,8 +1,20 @@
 
+
 /*
  * Stage: Development-01
  * @author: Resul Erdem Arduc 119200056
  * @author: Sinan Hacisoyu 119200060
+ * 
+ * Stage: Development-02
+ * @author: Alperen Çakır 117200088
+ * @author: Ege Ergen 120202011
+ * @author: Zafer Sercan Yıldız 119202037
+ * 
+ * Stage: Code Review
+ * @author: Müge Güney 120200058
+ * @author: Selin Yılmaz 119203057
+ * 
+ * 
 
  *
  */
@@ -15,6 +27,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -27,6 +40,7 @@ public class LoginWindow extends JFrame implements ActionListener {
 	// main method for testing the application
 	public static void main(String[] args) {
 		new LoginWindow();
+
 	}
 
 
@@ -68,8 +82,10 @@ public class LoginWindow extends JFrame implements ActionListener {
 		btn01 = new JButton("Reset");
 		btn02 = new JButton("Login");
 
+
 		btn01.addActionListener(this);
 		btn02.addActionListener(this);
+
 	}
 
 
@@ -119,6 +135,7 @@ public class LoginWindow extends JFrame implements ActionListener {
 	 *
 	 * @param e action event for detecting which button is clicked
 	 */
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -127,8 +144,8 @@ public class LoginWindow extends JFrame implements ActionListener {
 			String password = txt02.getText();		
 			
 			if(nickname.equals(users[0].getNickname()) && password.equals(users[0].getPassword())) {//checking the name and password
-				//txt01.setText("asdas");
-				//btn02.dispose();
+				txt01.setText("asdas");
+				btn02.dispose();
 				new SecondFrame();//adding new page
 			}
 		}	
@@ -146,12 +163,27 @@ public class LoginWindow extends JFrame implements ActionListener {
 
 //to make our new page implementation when the user click login button
 class SecondFrame {
+	private JButton btn03;
 	private JFrame f = new JFrame("Second");
 	
 	public SecondFrame() {
-	
+		f.setLayout(new GridLayout());
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(300,300);
 		f.setVisible(true);
 	}
+
+	public void initializeGUI2(){
+
+		btn03 = new JButton("...");
+
+	}
+
+	public void ActionPerformed(ActionEvent e){
+
+		if(e.getSource()==btn03){
+			String name = JOptionPane.showInputDialog("Input your name..");
+		}
+	}
+
 }
